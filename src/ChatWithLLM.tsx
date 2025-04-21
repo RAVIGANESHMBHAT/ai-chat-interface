@@ -89,7 +89,7 @@ const ChatWithLLM: React.FC = () => {
                     ) : (
                       <FaChevronDown className="icon" />
                     )}
-                    Source Documents
+                    Source Document
                   </h5>
                   {expandedIndexes.has(index) && (
                     <ul>
