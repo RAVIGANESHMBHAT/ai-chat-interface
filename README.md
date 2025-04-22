@@ -1,54 +1,102 @@
-# React + TypeScript + Vite
+# Chat With LLM
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based conversational UI that allows users to interact with a Large Language Model (LLM). This project supports rendering bot responses, collapsible source document sections, and a smooth loading animation with bubbles.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **User and Bot Messages**: Displays user inputs and bot responses in a clean, conversational format.
+- **HTML Rendering**: Renders stringified HTML templates for bot responses using `html-react-parser`.
+- **Collapsible Source Section**: Displays source documents in a collapsible section below bot responses.
+- **Loading Animation**: Shows a "3 bubbles" loading animation while waiting for API responses.
+- **API Integration**: Proxies API requests to avoid CORS issues.
 
-## Expanding the ESLint configuration
+## Demo
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![Chat UI Demo](https://via.placeholder.com/800x400?text=Chat+With+LLM+Demo)  
+*(Replace this with an actual screenshot or GIF of your application.)*
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/chat-with-llm.git
+   cd chat-with-llm
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open the app in your browser at `http://localhost:5173`.
+
+## Configuration
+
+### Proxy Setup
+To avoid CORS issues, the project uses a proxy configuration in `vite.config.ts`. Update the `target` field with your API server URL:
+```typescript
+server: {
+  proxy: {
+    '/api': {
+      target: 'https://your-server-url.com',
+      changeOrigin: true,
+      rewrite: (path) => path.replace(/^\/api/, ''),
     },
   },
-})
+},
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### API Endpoint
+Update the `URL` constant in `ChatWithLLM.tsx` with your API endpoint:
+```typescript
+const URL = "https://your-api-endpoint.com";
 ```
+
+## Project Structure
+
+```
+src/
+├── components/
+│   └── ChatWithLLM.tsx   # Main chat component
+├── styles/
+│   └── ChatWithLLM.css   # Styles for the chat UI
+├── App.tsx               # Root component
+├── main.tsx              # Entry point
+└── vite.config.ts        # Vite configuration
+```
+
+## Technologies Used
+
+- **React**: Frontend framework for building the UI.
+- **TypeScript**: For type safety and better developer experience.
+- **Vite**: Fast build tool for modern web projects.
+- **Axios**: For making API requests.
+- **html-react-parser**: For rendering stringified HTML templates.
+- **React Icons**: For icons like send, expand, and collapse.
+
+## Features in Detail
+
+### 1. User and Bot Messages
+- User messages are displayed on the right.
+- Bot messages are displayed on the left and can render HTML content.
+
+### 2. Collapsible Source Section
+- Each bot response can include a list of source documents.
+- The source section is collapsible, with expand (`V`) and collapse (`^`) icons.
+
+### 3. Loading Animation
+- A "3 bubbles" animation is displayed while waiting for API responses.
+
+### 4. API Integration
+- The app sends user inputs to the API and displays the bot's response along with source documents.
+
+## Scripts
+
+- `npm run dev`: Start the development server.
+- `npm run build`: Build the project for production.
+- `npm run preview`: Preview the production build.
