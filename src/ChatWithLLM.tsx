@@ -26,7 +26,7 @@ const ChatWithLLM: React.FC = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!input.trim()) return;
+    if (!input.trim() || loading) return;
 
     const userMessage: Message = { type: "user", text: input };
     setMessages((prev) => [...prev, userMessage]);
@@ -124,7 +124,7 @@ const ChatWithLLM: React.FC = () => {
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask anything"
         />
-        <button type="submit" disabled={loading} title="Send">
+        <button type="submit" disabled={loading || !input.trim()} title="Send">
           <FaPaperPlane />
         </button>
       </form>
