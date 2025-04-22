@@ -37,7 +37,7 @@ const ChatWithLLM: React.FC = () => {
     try {
       const response = await axios.post<{ content: string; source: Source[] }>(
         URL,
-        { prompt: input }
+        { query: input }
       );
       const botMessage: Message = {
         type: "bot",
