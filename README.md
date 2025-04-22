@@ -10,10 +10,11 @@ A React-based conversational UI that allows users to interact with a Large Langu
 - **Loading Animation**: Shows a "3 bubbles" loading animation while waiting for API responses.
 - **API Integration**: Proxies API requests to avoid CORS issues.
 
-## Demo
+## Screenshots
+![image](https://github.com/user-attachments/assets/9f2db425-de96-4fac-97a4-3362b74cd0c3)
 
-![Chat UI Demo](https://via.placeholder.com/800x400?text=Chat+With+LLM+Demo)  
-*(Replace this with an actual screenshot or GIF of your application.)*
+## Demo
+https://github.com/user-attachments/assets/14bdffb3-7697-4f48-bd2c-4a380d56b274
 
 ## Installation
 
