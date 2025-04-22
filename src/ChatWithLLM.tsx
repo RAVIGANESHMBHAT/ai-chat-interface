@@ -3,7 +3,8 @@ import axios from "axios";
 import "./ChatWithLLM.css";
 import { FaPaperPlane } from "react-icons/fa";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-import parse from "html-react-parser";
+import { marked } from "marked";
+import DOMPurify from "dompurify";
 
 interface Source {
   name: string;
@@ -16,7 +17,7 @@ interface Message {
   source?: Source[];
 }
 
-const URL = "https://run.mocky.io/v3/57f8019b-03d2-41eb-a41a-93dbbd060410";
+const URL = "https://run.mocky.io/v3/17f00cd5-fca5-431a-a4ee-04989e6ebca3";
 
 const ChatWithLLM: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -67,6 +68,12 @@ const ChatWithLLM: React.FC = () => {
     });
   };
 
+  const renderMessageContent = (text: string) => {
+    const rawHTML = marked.parse(text, { async: false });
+    const sanitizedHTML = DOMPurify.sanitize(rawHTML);
+    return <div dangerouslySetInnerHTML={{ __html: sanitizedHTML }} />;
+  };
+
   return (
     <div className="chat-container">
       <div className="chat-box">
@@ -76,7 +83,7 @@ const ChatWithLLM: React.FC = () => {
           messages.map((msg, index) => (
             <React.Fragment key={index}>
               <div className={`message ${msg.type === "user" ? "user" : "bot"}`}>
-                {msg.type === "bot" ? parse(msg.text) : msg.text}
+                {msg.type === "bot" ? renderMessageContent(msg.text) : msg.text}
               </div>
               {msg.type === "bot" && msg.source && msg.source.length > 0 && (
                 <div className="source-section">
