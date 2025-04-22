@@ -11,9 +11,7 @@ A React-based conversational UI that allows users to interact with a Large Langu
 - **API Integration**: Proxies API requests to avoid CORS issues.
 
 ## Demo
-
-![Chat UI Demo](https://via.placeholder.com/800x400?text=Chat+With+LLM+Demo)  
-*(Replace this with an actual screenshot or GIF of your application.)*
+https://github.com/user-attachments/assets/14bdffb3-7697-4f48-bd2c-4a380d56b274
 
 ## Installation
 
