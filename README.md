@@ -5,7 +5,7 @@ A React-based conversational UI that allows users to interact with a Large Langu
 ## Features
 
 - **User and Bot Messages**: Displays user inputs and bot responses in a clean, conversational format.
-- **HTML Rendering**: Renders stringified HTML templates for bot responses using `html-react-parser`.
+- **Markdown Rendering**: Renders stringified markdown templates for bot responses using `marked`.
 - **Collapsible Source Section**: Displays source documents in a collapsible section below bot responses.
 - **Loading Animation**: Shows a "3 bubbles" loading animation while waiting for API responses.
 - **API Integration**: Proxies API requests to avoid CORS issues.
@@ -84,7 +84,7 @@ src/
 
 ### 1. User and Bot Messages
 - User messages are displayed on the right.
-- Bot messages are displayed on the left and can render HTML content.
+- Bot messages are displayed on the left and can render markdown content.
 
 ### 2. Collapsible Source Section
 - Each bot response can include a list of source documents.
