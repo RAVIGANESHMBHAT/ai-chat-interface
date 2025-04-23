@@ -77,7 +77,7 @@ src/
 - **TypeScript**: For type safety and better developer experience.
 - **Vite**: Fast build tool for modern web projects.
 - **Axios**: For making API requests.
-- **html-react-parser**: For rendering stringified HTML templates.
+- **marked**: For rendering stringified markdown templates.
 - **React Icons**: For icons like send, expand, and collapse.
 
 ## Features in Detail
